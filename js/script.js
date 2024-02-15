@@ -17,7 +17,14 @@
 // this is for system two with function(utility)
 
 
+function continueGame(){
+    //step:1- generate a random alphabet
+    const alphabet = getARandomAlphabet();
+    console.log('your Random alphabet',alphabet)
+}
+
 function play(){
     hideElementById('home-screen');
-    showElementById('play-ground')
+    showElementById('play-ground');
+    continueGame()
 }
