@@ -20,7 +20,14 @@
 function continueGame(){
     //step:1- generate a random alphabet
     const alphabet = getARandomAlphabet();
-    console.log('your Random alphabet',alphabet)
+    console.log('your Random alphabet',alphabet);
+
+    // set randomly generated alphabet to the screen (show it)
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    currentAlphabetElement.innerText = alphabet;
+
+    // set backGrounded color
+    setBackgroundColorById(alphabet);
 }
 
 function play(){
