@@ -77,7 +77,7 @@
                 <div class="flex justify-between w-3/4">
                     <div class="flex-1">
                         <button class="btn rounded-full bg-purple-500 text-white px-4">life
-                           <img src="images/pc1.svg" alt=""> <span id="current-life">1</span>
+                           <img src="images/pc1.svg" alt=""> <span id="current-life">5</span>
                            
                         </button>
                     </div>
@@ -94,10 +94,11 @@
           <!-------------final Score start------------ -->
         <section id="final-score" class="flex justify-center items-center min-h-screen hidden">
             <div class="text-white text-center space-y-6 bg-[#FFFFFF33] p-4 rounded-lg">
+                <p class="text-3xl text-white">Game Over!!</p>
                 <h1 class="text-8xl">
-                    <span class="font-extrabold">Score:</span> <span>14</span>
+                    <span class="font-extrabold">Score:</span> <span id="game-score">0</span>
                 </h1>
-                <button class="btn">Play Again</button>
+                <button onclick="play()" class="btn">Play Again</button>
                 <p>Practice will make you a Pro</p>
             </div>
         </section>
