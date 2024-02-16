@@ -15,6 +15,36 @@
 
 
 // this is for system two with function(utility)
+// function handleKeyBoardButtonPress(){
+//     console.log('button press');
+// }
+// //capture keyboard press
+// document.addEventListener('keyup',handleKeyBoardButtonPress)
+// document.addEventListener('keyup',)
+
+
+function handleKeyBoardKeyUpEvent(event){
+    const playerPressed = event.key;
+    console.log('player pressed',playerPressed);
+    //get the expected to press
+
+    const currentAlphabetElement =document.getElementById('current-alphabet');
+    const currentAlphabet = currentAlphabetElement.innerText;
+    const expectedAlphabet = currentAlphabet.toLowerCase();
+    console.log(playerPressed,expectedAlphabet);
+
+    // const playedPress
+    if(playerPressed === expectedAlphabet){
+        console.log('you win');
+    }
+    else{
+        console.log('missed the letter.you lost a life');
+    }
+}
+
+document.addEventListener('keyup', handleKeyBoardKeyUpEvent)
+
+
 
 
 function continueGame(){
