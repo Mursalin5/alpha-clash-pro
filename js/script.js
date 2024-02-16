@@ -1,5 +1,5 @@
 
-//  this for one system.
+//  this for one system.---------------------------
 
 
 // function play(){
@@ -14,7 +14,7 @@
 // }
 
 
-// this is for system two with function(utility)
+// this is for system two with function(utility)--------------------
 // function handleKeyBoardButtonPress(){
 //     console.log('button press');
 // }
@@ -35,39 +35,68 @@ function handleKeyBoardKeyUpEvent(event) {
     // const playedPress
     if (playerPressed === expectedAlphabet) {
         console.log('you got a point');
+
+        const currentScore = getTextElementValueById('current-score')
+        console.log(currentScore);
+        const updateScore = currentScore + 1;
+        setTextElementValueById('current-score', updateScore);
         // console.log('you have pressed correctly', expectedAlphabet);
         //update score--------
-        // 1. get the current score
-        const currentScoreElement = document.getElementById('current-score');
-        const currentScoreText = currentScoreElement.innerText;
-        const currentScore = parseInt(currentScoreText);
-        console.log(currentScore);
-        // 2. increase the score by 1
-        const newScore = currentScore + 1;
-
-        // 3. show the update score 
-        currentScoreElement.innerText = newScore;
-
-
+        // // 1. get the current score
+        //-----------------------------------------------------------------------
+        // const currentScoreElement = document.getElementById('current-score');
+        // const currentScoreText = currentScoreElement.innerText;
+        // const currentScore = parseInt(currentScoreText);
+        // console.log(currentScore);
+        // // 2. increase the score by 1
+        // const newScore = currentScore + 1;
+        // // 3. show the update score 
+        // currentScoreElement.innerText = newScore;
+        //------------------------------------------------------------------------
         removeBackgroundColorById(expectedAlphabet);
         continueGame();
 
     }
     else {
-        console.log('missed the letter.you lost a life');
+        console.log('missed the letter.you lost a life')
+
+        const currentLife = getTextElementValueById('current-life');
+        const updatedLife = currentLife - 1;
+        setTextElementValueById('current-life', updatedLife);
+
+        if(updatedLife === 0){
+            gameOver();
+        }
+
         // step-1: get the current life number
-        const currentLifeElement = document.getElementById('current-life');
-        const currentLifeText = currentLifeElement.innerText;
-        const currentLife = parseInt(currentLifeText);
-        //step-2: reduce the life count
-        const newLife = currentLife - 1;
-        // display the update life count
-        currentLifeElement.innerText = newLife;
+        //--------------------------------------------------------
+        // const currentLifeElement = document.getElementById('current-life');
+        // const currentLifeText = currentLifeElement.innerText;
+        // const currentLife = parseInt(currentLifeText);
+        // //step-2: reduce the life count
+        // const newLife = currentLife - 1;
+        // // display the update life count
+        // currentLifeElement.innerText = newLife;
+        //---------------------------------------habijabi code
+
+        // if (newLife === 0, function gameOver() {
+        //     hideElementById('play-ground');
+
+        // }) {
+        //     gameOver();
+        // }
+        // if (newLife === 0) {
+        //     const playGroundSection = document.getElementById('play-ground');
+        //     playGroundSection.classList.add('hidden');
+        // }
+        //-------------------------------------------
+
     }
+
 }
 
-document.addEventListener('keyup', handleKeyBoardKeyUpEvent)
 
+document.addEventListener('keyup', handleKeyBoardKeyUpEvent)
 
 
 
@@ -87,4 +116,8 @@ function play() {
     hideElementById('home-screen');
     showElementById('play-ground');
     continueGame()
+}
+function gameOver(){
+    hideElementById('play-ground');
+    showElementById('final-score');
 }
