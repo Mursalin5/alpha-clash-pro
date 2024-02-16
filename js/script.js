@@ -121,3 +121,6 @@ function gameOver(){
     hideElementById('play-ground');
     showElementById('final-score');
 }
+function finalScore(){
+    
+}
