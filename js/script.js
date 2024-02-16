@@ -23,22 +23,46 @@
 // document.addEventListener('keyup',)
 
 
-function handleKeyBoardKeyUpEvent(event){
+function handleKeyBoardKeyUpEvent(event) {
     const playerPressed = event.key;
-    console.log('player pressed',playerPressed);
+    console.log('player pressed', playerPressed);
     //get the expected to press
 
-    const currentAlphabetElement =document.getElementById('current-alphabet');
+    const currentAlphabetElement = document.getElementById('current-alphabet');
     const currentAlphabet = currentAlphabetElement.innerText;
     const expectedAlphabet = currentAlphabet.toLowerCase();
-    console.log(playerPressed,expectedAlphabet);
 
     // const playedPress
-    if(playerPressed === expectedAlphabet){
-        console.log('you win');
+    if (playerPressed === expectedAlphabet) {
+        console.log('you got a point');
+        // console.log('you have pressed correctly', expectedAlphabet);
+        //update score--------
+        // 1. get the current score
+        const currentScoreElement = document.getElementById('current-score');
+        const currentScoreText = currentScoreElement.innerText;
+        const currentScore = parseInt(currentScoreText);
+        console.log(currentScore);
+        // 2. increase the score by 1
+        const newScore = currentScore + 1;
+
+        // 3. show the update score 
+        currentScoreElement.innerText = newScore;
+
+
+        removeBackgroundColorById(expectedAlphabet);
+        continueGame();
+
     }
-    else{
+    else {
         console.log('missed the letter.you lost a life');
+        // step-1: get the current life number
+        const currentLifeElement = document.getElementById('current-life');
+        const currentLifeText = currentLifeElement.innerText;
+        const currentLife = parseInt(currentLifeText);
+        //step-2: reduce the life count
+        const newLife = currentLife - 1;
+        // display the update life count
+        currentLifeElement.innerText = newLife;
     }
 }
 
@@ -47,10 +71,9 @@ document.addEventListener('keyup', handleKeyBoardKeyUpEvent)
 
 
 
-function continueGame(){
+function continueGame() {
     //step:1- generate a random alphabet
     const alphabet = getARandomAlphabet();
-    console.log('your Random alphabet',alphabet);
 
     // set randomly generated alphabet to the screen (show it)
     const currentAlphabetElement = document.getElementById('current-alphabet');
@@ -60,7 +83,7 @@ function continueGame(){
     setBackgroundColorById(alphabet);
 }
 
-function play(){
+function play() {
     hideElementById('home-screen');
     showElementById('play-ground');
     continueGame()
